@@ -1,5 +1,4 @@
-﻿//INSTANT C# NOTE: Formerly VB project-level imports:
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -24,7 +23,7 @@ namespace DataOperations
 			// Make sure to change DatabaseServer to the server
 			// with CustomerDatabase
 			//
-			DatabaseServer = "KARENS-PC";
+			DatabaseServer = ".\\SQLEXPRESS";
 			DefaultCatalog = "CustomerDatabase";
 
 		}
@@ -72,9 +71,9 @@ namespace DataOperations
 		/// </summary>
 		public void ReturnErrorInformation()
 		{
-			using (SqlConnection cn = new SqlConnection {ConnectionString = ConnectionString})
+			using (var cn = new SqlConnection {ConnectionString = ConnectionString})
 			{
-				using (SqlCommand cmd = new SqlCommand
+				using (var cmd = new SqlCommand
 				{
 					Connection = cn,
 					CommandType = CommandType.StoredProcedure
@@ -131,9 +130,9 @@ namespace DataOperations
 
 			try
 			{
-				using (SqlConnection cn = new SqlConnection {ConnectionString = ConnectionString})
+				using (var cn = new SqlConnection {ConnectionString = ConnectionString})
 				{
-					using (SqlCommand cmd = new SqlCommand
+					using (var cmd = new SqlCommand
 					{
 						Connection = cn,
 						CommandType = CommandType.StoredProcedure
@@ -172,13 +171,13 @@ namespace DataOperations
 
 			mHasException = false;
 
-			List<ContactTypes> contactList = new List<ContactTypes>();
+			var contactList = new List<ContactTypes>();
 
 			try
 			{
-				using (SqlConnection cn = new SqlConnection {ConnectionString = ConnectionString})
+				using (var cn = new SqlConnection {ConnectionString = ConnectionString})
 				{
-					using (SqlCommand cmd = new SqlCommand
+					using (var cmd = new SqlCommand
 					{
 						Connection = cn,
 						CommandType = CommandType.StoredProcedure
@@ -218,10 +217,10 @@ namespace DataOperations
 			mHasException = false;
 			try
 			{
-				using (SqlConnection cn = new SqlConnection {ConnectionString = ConnectionString})
+				using (var cn = new SqlConnection {ConnectionString = ConnectionString})
 				{
 
-					using (SqlCommand cmd = new SqlCommand
+					using (var cmd = new SqlCommand
 					{
 						Connection = cn,
 						CommandType = CommandType.StoredProcedure
@@ -277,9 +276,9 @@ namespace DataOperations
 		public bool RemoveCustomer(int identifier)
 		{
 			mHasException = false;
-			using (SqlConnection cn = new SqlConnection {ConnectionString = ConnectionString})
+			using (var cn = new SqlConnection {ConnectionString = ConnectionString})
 			{
-				using (SqlCommand cmd = new SqlCommand
+				using (var cmd = new SqlCommand
 				{
 					Connection = cn,
 					CommandType = CommandType.StoredProcedure
@@ -343,9 +342,9 @@ namespace DataOperations
 
 			try
 			{
-				using (SqlConnection cn = new SqlConnection {ConnectionString = this.ConnectionString})
+				using (var cn = new SqlConnection {ConnectionString = this.ConnectionString})
 				{
-					using (SqlCommand cmd = new SqlCommand
+					using (var cmd = new SqlCommand
 					{
 						Connection = cn,
 						CommandType = CommandType.StoredProcedure

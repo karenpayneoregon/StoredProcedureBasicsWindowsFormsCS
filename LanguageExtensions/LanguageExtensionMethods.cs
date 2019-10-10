@@ -1,5 +1,4 @@
-﻿//INSTANT C# NOTE: Formerly VB project-level imports:
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -28,20 +27,14 @@ namespace ExtensionsLibrary
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <returns></returns>
-		public static DataRow CurrentRow(this BindingSource sender)
-		{
-			return ((DataRowView)sender.Current).Row;
-		}
-		/// <summary>
+		public static DataRow CurrentRow(this BindingSource sender) => ((DataRowView)sender.Current).Row;
+        /// <summary>
 		/// Return DataSource as a DataTable
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <returns></returns>
-		public static DataTable DataTable(this BindingSource sender)
-		{
-			return (DataTable)sender.DataSource;
-		}
-		/// <summary>
+		public static DataTable DataTable(this BindingSource sender) => (DataTable)sender.DataSource;
+        /// <summary>
 		/// Add new DataRow to DataTable where Identifier is a valid existing primary key
 		/// </summary>
 		/// <param name="sender"></param>
@@ -54,35 +47,14 @@ namespace ExtensionsLibrary
 		{
 			sender.DataTable().Rows.Add(new object[] {Identifier, CompanyName, ContactName, ContactTypeIdentifier, ContactTitle});
 		}
-		public static int Identifier(this DataRow sender)
-		{
-			return sender.Field<int>("Identifier");
-		}
-		public static string CompanyName(this DataRow sender)
-		{
-			return sender.Field<string>("CompanyName");
-		}
-		public static void SetCompanyName(this DataRow sender, string newCompanyNameValue)
-		{
-			sender.SetField("CompanyName", newCompanyNameValue);
-		}
-		public static string ContactName(this DataRow sender)
-		{
-			return sender.Field<string>("ContactName");
-		}
-		public static void SetContactName(this DataRow sender, string newContactNameValue)
-		{
-			sender.SetField("ContactName", newContactNameValue);
-		}
-		public static string ContactTitle(this DataRow sender)
-		{
-			return sender.Field<string>("ContactTitle");
-		}
-		public static void SetContactTitle(this DataRow sender, string newContactTitleValue)
-		{
-			sender.SetField("ContactTitle", newContactTitleValue);
-		}
-		public static void ExpandColumns(this DataGridView sender)
+		public static int Identifier(this DataRow sender) => sender.Field<int>("Identifier");
+        public static string CompanyName(this DataRow sender) => sender.Field<string>("CompanyName");
+        public static void SetCompanyName(this DataRow sender, string newCompanyNameValue) => sender.SetField("CompanyName", newCompanyNameValue);
+        public static string ContactName(this DataRow sender) => sender.Field<string>("ContactName");
+        public static void SetContactName(this DataRow sender, string newContactNameValue) => sender.SetField("ContactName", newContactNameValue);
+        public static string ContactTitle(this DataRow sender) => sender.Field<string>("ContactTitle");
+        public static void SetContactTitle(this DataRow sender, string newContactTitleValue) => sender.SetField("ContactTitle", newContactTitleValue);
+        public static void ExpandColumns(this DataGridView sender)
 		{
 			foreach (DataGridViewColumn col in sender.Columns)
 			{

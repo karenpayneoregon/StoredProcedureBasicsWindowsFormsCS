@@ -1,22 +1,16 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.Diagnostics;
 using System.Windows.Forms;
-using System.Linq;
-using System.Xml.Linq;
-using System.Threading.Tasks;
-using WindowsFormsApp1;
-using WindowsFormsApp1.Special.My;
 using DataOperations;
 using DataOperations.TypeClasses;
 using ExtensionsLibrary;
+using static WindowsFormsApp1.Special.My.KarenDialogs;
 
 
-namespace WindowsApplication1
+namespace WindowsFormsApp1
 {
+    /// <summary>
+    /// * ComboBox and button at bottom work but not needed at this time so they are hidden.
+    /// </summary>
 	public partial class MainForm
 	{
 		public MainForm()
@@ -24,8 +18,8 @@ namespace WindowsApplication1
 			InitializeComponent();
 		}
 
-		private BackendOperations dataOperations = new BackendOperations();
-		private BindingSource bsCustomers = new BindingSource();
+		private readonly BackendOperations _dataOperations = new BackendOperations();
+		private readonly BindingSource _bsCustomers = new BindingSource();
 		/// <summary>
 		/// Insert a new row
 		/// </summary>
@@ -35,7 +29,7 @@ namespace WindowsApplication1
 		private void NewCustomerButton_Click(object sender, EventArgs e)
 		{
 
-			if (bsCustomers.DataSource == null)
+			if (_bsCustomers.DataSource == null)
 			{
 				MessageBox.Show("Please select some data");
 				return;
@@ -45,25 +39,22 @@ namespace WindowsApplication1
 			CustomerEditorForm f = new CustomerEditorForm();
 			try
 			{
-				f.cboContactTitles.DataSource = dataOperations.RetrieveContactTitles();
+				f.cboContactTitles.DataSource = _dataOperations.RetrieveContactTitles();
+
 				if (f.ShowDialog() == DialogResult.OK)
 				{
-					if (f.ValidateTextBoxes())
-					{
+                    var contactTypeIdentifier = ((ContactTypes)f.cboContactTitles.SelectedItem).Identifier;
+                    int primaryKey = _dataOperations.AddCustomer(f.CompanyNameTextBox.Text, f.ContactNameTextBox.Text, contactTypeIdentifier);
 
-						var contactTypeIdentifier = ((ContactTypes)f.cboContactTitles.SelectedItem).Identifier;
-						int primaryKey = dataOperations.AddCustomer(f.txtCompanyName.Text, f.txtContactName.Text, contactTypeIdentifier);
-
-						if (primaryKey != -1)
-						{
-							bsCustomers.AddRow(primaryKey, f.txtCompanyName.Text, f.txtContactName.Text, f.cboContactTitles.Text, contactTypeIdentifier);
-						}
-					}
-					else
-					{
-						MessageBox.Show("Nothing save as one or more fields were empty.");
-					}
-
+                    if (primaryKey != -1)
+                    {
+                        _bsCustomers.AddRow(
+                            primaryKey, 
+                            f.CompanyNameTextBox.Text, 
+                            f.ContactNameTextBox.Text, 
+                            f.cboContactTitles.Text, 
+                            contactTypeIdentifier);
+                    }
 				}
 			}
 			finally
@@ -81,19 +72,19 @@ namespace WindowsApplication1
 		private void RemoveCurrentCustomerButton_Click(object sender, EventArgs e)
 		{
 
-			if (bsCustomers.DataSource == null)
+			if (_bsCustomers.DataSource == null)
 			{
 				MessageBox.Show("Please select some data");
 				return;
 			}
 
-			if (KarenDialogs.Question("Remove " + bsCustomers.CurrentRow().CompanyName()))
+			if (Question("Remove " + _bsCustomers.CurrentRow().CompanyName()))
 			{
-				if (!dataOperations.RemoveCustomer(bsCustomers.CurrentRow().Identifier()))
+				if (!_dataOperations.RemoveCustomer(_bsCustomers.CurrentRow().Identifier()))
 				{
-					if (!dataOperations.IsSuccessFul)
+					if (!_dataOperations.IsSuccessFul)
 					{
-						MessageBox.Show($"Failed to remove customer{Environment.NewLine}{dataOperations.LastExceptionMessage}");
+						MessageBox.Show($"Failed to remove customer{Environment.NewLine}{_dataOperations.LastExceptionMessage}");
 					}
 				}
 				else
@@ -101,7 +92,7 @@ namespace WindowsApplication1
 					//
 					// Only remove row if removed successfully from the database table
 					//
-					bsCustomers.RemoveCurrent();
+					_bsCustomers.RemoveCurrent();
 
 				}
 			}
@@ -114,26 +105,26 @@ namespace WindowsApplication1
 		private void LoadCustomers()
 		{
 
-			var customerDataTable = dataOperations.RetrieveAllRecords();
-			var contactList = dataOperations.RetrieveContactTitles();
+			var customerDataTable = _dataOperations.RetrieveAllRecords();
+			var contactList = _dataOperations.RetrieveContactTitles();
 
-			if (dataOperations.IsSuccessFul)
+			if (_dataOperations.IsSuccessFul)
 			{
 
-				bsCustomers.DataSource = customerDataTable;
-				bsCustomers.Sort = "CompanyName";
+				_bsCustomers.DataSource = customerDataTable;
+				_bsCustomers.Sort = "CompanyName";
 
-				DataGridView1.DataSource = bsCustomers;
+				DataGridView1.DataSource = _bsCustomers;
 				DataGridView1.ExpandColumns();
 
-				bsCustomers.MoveFirst();
+				_bsCustomers.MoveFirst();
 
 				ContactTypeComboBox.DataSource = contactList;
 
 			}
 			else
 			{
-				MessageBox.Show($"Failed to load data{Environment.NewLine}{dataOperations.LastExceptionMessage}");
+				MessageBox.Show($"Failed to load data\n{_dataOperations.LastExceptionMessage}");
 			}
 		}
 		/// <summary>
@@ -148,24 +139,25 @@ namespace WindowsApplication1
 
 			var contactTypeIdentifier = ((ContactTypes)ContactTypeComboBox.SelectedItem).Identifier;
 
-			var dt = dataOperations.GetAllRecordsByContactTitle(contactTypeIdentifier);
+			var dt = _dataOperations.GetAllRecordsByContactTitle(contactTypeIdentifier);
 
-			if (dataOperations.IsSuccessFul)
+			if (_dataOperations.IsSuccessFul)
 			{
-				bsCustomers.DataSource = dt;
-				DataGridView1.DataSource = bsCustomers;
-				bsCustomers.MoveFirst();
+				_bsCustomers.DataSource = dt;
+				DataGridView1.DataSource = _bsCustomers;
+				_bsCustomers.MoveFirst();
 			}
 			else
 			{
-				bsCustomers.DataSource = null;
-				DataGridView1.DataSource = bsCustomers;
+				_bsCustomers.DataSource = null;
+				DataGridView1.DataSource = _bsCustomers;
 			}
 
-			bsCustomers.DataSource = dt;
-			DataGridView1.DataSource = bsCustomers;
+			_bsCustomers.DataSource = dt;
+			DataGridView1.DataSource = _bsCustomers;
 
-			bsCustomers.MoveFirst();
+			_bsCustomers.MoveFirst();
+
 		}
 		/// <summary>
 		/// For either
@@ -190,44 +182,46 @@ namespace WindowsApplication1
 		}
 		private void DataGridView1_DoubleClick(object sender, EventArgs e)
 		{
-			if (bsCustomers.Current != null)
+			if (_bsCustomers.Current != null)
 			{
 				EditCurrentCustomer();
 			}
 		}
 		private void EditCurrentCustomer()
 		{
-			if (bsCustomers.DataSource == null)
+			if (_bsCustomers.DataSource == null)
 			{
 				MessageBox.Show("Please select some data");
 				return;
 			}
 
-			var contactList = dataOperations.RetrieveContactTitles();
+			var contactList = _dataOperations.RetrieveContactTitles();
 
 			CustomerEditorForm f = new CustomerEditorForm();
 			try
 			{
 
-				f.txtCompanyName.Text = bsCustomers.CurrentRow().CompanyName();
-				f.txtContactName.Text = bsCustomers.CurrentRow().ContactName();
+				f.CompanyNameTextBox.Text = _bsCustomers.CurrentRow().CompanyName();
+				f.ContactNameTextBox.Text = _bsCustomers.CurrentRow().ContactName();
 				f.cboContactTitles.DataSource = contactList;
 
-				f.cboContactTitles.SelectedIndex = contactList.FindIndex((contactType) => contactType.ContactType == bsCustomers.CurrentRow().ContactTitle());
+				f.cboContactTitles.SelectedIndex = 
+                    contactList.FindIndex((contactType) => contactType.ContactType == _bsCustomers.CurrentRow()
+                                                               .ContactTitle());
 
 				if (f.ShowDialog() == DialogResult.OK)
 				{
 					if (f.ValidateTextBoxes())
 					{
 
-						var customerIdentifier = bsCustomers.CurrentRow().Identifier();
+						var customerIdentifier = _bsCustomers.CurrentRow().Identifier();
 						var contactTypeIdentifier = ((ContactTypes)f.cboContactTitles.SelectedItem).Identifier;
 
-						if (dataOperations.UpdateCustomer(customerIdentifier, f.txtCompanyName.Text, f.txtContactName.Text, contactTypeIdentifier))
+						if (_dataOperations.UpdateCustomer(customerIdentifier, f.CompanyNameTextBox.Text, f.ContactNameTextBox.Text, contactTypeIdentifier))
 						{
-							bsCustomers.CurrentRow().SetCompanyName(f.txtCompanyName.Text);
-							bsCustomers.CurrentRow().SetContactName(f.txtContactName.Text);
-							bsCustomers.CurrentRow().SetContactTitle(f.cboContactTitles.Text);
+							_bsCustomers.CurrentRow().SetCompanyName(f.CompanyNameTextBox.Text);
+							_bsCustomers.CurrentRow().SetContactName(f.ContactNameTextBox.Text);
+							_bsCustomers.CurrentRow().SetContactTitle(f.cboContactTitles.Text);
 						}
 					}
 					else
@@ -245,21 +239,11 @@ namespace WindowsApplication1
 
 		private void ExitButton_Click(object sender, EventArgs e)
 		{
-			dataOperations.ReturnErrorInformation();
+			_dataOperations.ReturnErrorInformation();
 
 		}
 
-		private static MainForm _DefaultInstance;
-		public static MainForm DefaultInstance
-		{
-			get
-			{
-				if (_DefaultInstance == null || _DefaultInstance.IsDisposed)
-					_DefaultInstance = new MainForm();
 
-				return _DefaultInstance;
-			}
-		}
 	}
 
 }

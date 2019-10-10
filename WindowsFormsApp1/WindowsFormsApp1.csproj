@@ -55,12 +55,6 @@
     <Compile Include="CustomerEditorForm.Designer.cs">
       <DependentUpon>CustomerEditorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,12 +94,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataOperations_vb\DataOperations.csproj">
+    <ProjectReference Include="..\DataOperations\DataOperations.csproj">
       <Project>{a2c991fa-0442-4723-8d35-f97e263d2adb}</Project>
       <Name>DataOperations</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Extensions_vb\ExtensionsLibrary.csproj">
-      <Project>{30fa06ae-2389-4d3f-a575-fa063401bae8}</Project>
+    <ProjectReference Include="..\LanguageExtensions\ExtensionsLibrary.csproj">
+      <Project>{30FA06AE-2389-4D3F-A575-FA063401BAE8}</Project>
       <Name>ExtensionsLibrary</Name>
     </ProjectReference>
   </ItemGroup>
