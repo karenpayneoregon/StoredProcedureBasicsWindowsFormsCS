@@ -99,7 +99,7 @@
       <Name>DataOperations</Name>
     </ProjectReference>
     <ProjectReference Include="..\LanguageExtensions\ExtensionsLibrary.csproj">
-      <Project>{30FA06AE-2389-4D3F-A575-FA063401BAE8}</Project>
+      <Project>{30fa06ae-2389-4d3f-a575-fa063401bae8}</Project>
       <Name>ExtensionsLibrary</Name>
     </ProjectReference>
   </ItemGroup>
