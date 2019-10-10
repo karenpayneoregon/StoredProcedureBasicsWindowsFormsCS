@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ExtensionsLibrary</name>
+    </assembly>
+    <members>
+        <member name="M:ExtensionsLibrary.LanguageExtensionMethods.ValidateTextBoxes(System.Windows.Forms.Control)">
+            <summary>
+            Determine if a TextBox controls are not empty for a container
+            </summary>
+            <param name="sender"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ExtensionsLibrary.LanguageExtensionMethods.CurrentRow(System.Windows.Forms.BindingSource)">
+            <summary>
+            Return current row as a DataRow
+            </summary>
+            <param name="sender"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ExtensionsLibrary.LanguageExtensionMethods.DataTable(System.Windows.Forms.BindingSource)">
+            <summary>
+            Return DataSource as a DataTable
+            </summary>
+            <param name="sender"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ExtensionsLibrary.LanguageExtensionMethods.AddRow(System.Windows.Forms.BindingSource,System.Int32,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Add new DataRow to DataTable where Identifier is a valid existing primary key
+            </summary>
+            <param name="sender"></param>
+            <param name="Identifier">Existing primary key</param>
+            <param name="CompanyName">Company name value</param>
+            <param name="ContactName">Contact name value</param>
+            <param name="ContactTitle">Contact title value</param>
+            <param name="ContactTypeIdentifier">Corresponding identifier for contact title</param>
+        </member>
+        <member name="T:ExtensionsLibrary.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ExtensionsLibrary.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ExtensionsLibrary.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

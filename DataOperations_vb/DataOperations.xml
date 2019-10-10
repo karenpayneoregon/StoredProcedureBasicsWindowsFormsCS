@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataOperations</name>
+    </assembly>
+    <members>
+        <member name="T:DataOperations.BackendOperations">
+            <summary>
+            All data queries are in Stored Procedures
+            </summary>
+        </member>
+        <member name="M:DataOperations.BackendOperations.ReturnErrorInformation">
+            <summary>
+            Mocked up sample showing how to return error information from a failed
+            operation within a stored procedure.
+            </summary>
+        </member>
+        <member name="M:DataOperations.BackendOperations.GetAllRecordsByContactTitle(System.Int32)">
+            <summary>
+            This example does not return contact type (contact name) as this is
+            common practice as we know the type from the ComboBox selection.
+            </summary>
+            <param name="contactTypeIdentifier"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataOperations.BackendOperations.UpdateCustomer(System.Int32,System.String,System.String,System.Int32)">
+            <summary>
+            Update record if primary is found
+            </summary>
+            <param name="primaryKey"></param>
+            <param name="companyName"></param>
+            <param name="contactName"></param>
+            <param name="contactIdentifier"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataOperations.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:DataOperations.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:DataOperations.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>
