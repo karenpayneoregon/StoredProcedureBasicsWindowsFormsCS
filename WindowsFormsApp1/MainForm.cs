@@ -105,7 +105,7 @@ namespace WindowsFormsApp1
 		private void LoadCustomers()
 		{
 
-			var customerDataTable = _dataOperations.RetrieveAllRecords();
+			var customerDataTable = _dataOperations.RetrieveAllCustomerRecords();
 			var contactList = _dataOperations.RetrieveContactTitles();
 
 			if (_dataOperations.IsSuccessFul)
@@ -239,8 +239,9 @@ namespace WindowsFormsApp1
 
 		private void ExitButton_Click(object sender, EventArgs e)
 		{
+            Close();
 			//_dataOperations.ReturnErrorInformation();
-            _dataOperations.GetStoredProcedureContentsWithParameters("UpateCustomer");
+            //_dataOperations.GetStoredProcedureContentsWithParameters("UpateCustomer");
 
 		}
 

@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Xml.Linq;
 using System.Threading.Tasks;
-
+using BaseConnectionLibrary.ConnectionClasses;
 using System.Data.SqlClient;
 using DataOperations.TypeClasses;
 
@@ -15,7 +15,7 @@ namespace DataOperations
 	/// <summary>
 	/// All data queries are in Stored Procedures
 	/// </summary>
-	public class BackendOperations : BaseConnectionLibrary.ConnectionClasses.SqlServerConnection
+	public class BackendOperations : SqlServerConnection
 	{
 		public BackendOperations()
 		{
@@ -136,7 +136,7 @@ namespace DataOperations
 	        return procedureDetailList;
 	    }
 
-        public DataTable RetrieveAllRecords()
+        public DataTable RetrieveAllCustomerRecords()
 		{
 
 			mHasException = false;
@@ -274,6 +274,10 @@ namespace DataOperations
 			return dt;
 
 		}
+        /// <summary>
+        /// Retrieve all contact titles
+        /// </summary>
+        /// <returns></returns>
 		public List<ContactTypes> RetrieveContactTitles()
 		{
 
@@ -320,6 +324,13 @@ namespace DataOperations
 			return contactList;
 
 		}
+        /// <summary>
+        /// Add a new Customer, return new primary key on success.
+        /// </summary>
+        /// <param name="companyName"></param>
+        /// <param name="contactName"></param>
+        /// <param name="contactTypeIdentifier"></param>
+        /// <returns></returns>
 		public int AddCustomer(string companyName, string contactName, int contactTypeIdentifier)
 		{
 			mHasException = false;
@@ -381,7 +392,12 @@ namespace DataOperations
 
 			}
 		}
-		public bool RemoveCustomer(int identifier)
+        /// <summary>
+        /// Remove customer by primary key
+        /// </summary>
+        /// <param name="primaryKey">Existing customer key</param>
+        /// <returns></returns>
+		public bool RemoveCustomer(int primaryKey)
 		{
 			mHasException = false;
 			using (var cn = new SqlConnection {ConnectionString = ConnectionString})
@@ -407,7 +423,7 @@ namespace DataOperations
 						Direction = ParameterDirection.Output
 					});
 
-					cmd.Parameters["@Identity"].Value = identifier;
+					cmd.Parameters["@Identity"].Value = primaryKey;
 					cmd.Parameters["@flag"].Value = 0;
 
 					try
@@ -417,14 +433,7 @@ namespace DataOperations
 
 						cmd.ExecuteNonQuery();
 
-						if (Convert.ToBoolean(cmd.Parameters["@flag"].Value))
-						{
-							return true;
-						}
-						else
-						{
-							return false;
-						}
+						return Convert.ToBoolean(cmd.Parameters["@flag"].Value);
 					}
 					catch (Exception ex)
 					{
@@ -436,12 +445,12 @@ namespace DataOperations
 			}
 		}
 		/// <summary>
-		/// Update record if primary is found
+		/// Update record by primary key
 		/// </summary>
-		/// <param name="primaryKey"></param>
+		/// <param name="primaryKey">Existing customer key</param>
 		/// <param name="companyName"></param>
 		/// <param name="contactName"></param>
-		/// <param name="contactIdentifier"></param>
+		/// <param name="contactIdentifier">Existing contact key</param>
 		/// <returns></returns>
 		public bool UpdateCustomer(int primaryKey, string companyName, string contactName, int contactIdentifier)
 		{
@@ -498,16 +507,9 @@ namespace DataOperations
 
 						cmd.ExecuteNonQuery();
 
-						if (Convert.ToBoolean(cmd.Parameters["@flag"].Value))
-						{
-							return true;
-						}
-						else
-						{
-							return false;
-						}
+                        return Convert.ToBoolean(cmd.Parameters["@flag"].Value);
 
-					}
+                    }
 				}
 			}
 			catch (Exception ex)
