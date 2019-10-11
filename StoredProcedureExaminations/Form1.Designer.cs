@@ -70,9 +70,9 @@
             // 
             // GetStoredProcDetailsButton
             // 
-            this.GetStoredProcDetailsButton.Location = new System.Drawing.Point(12, 17);
+            this.GetStoredProcDetailsButton.Location = new System.Drawing.Point(13, 17);
             this.GetStoredProcDetailsButton.Name = "GetStoredProcDetailsButton";
-            this.GetStoredProcDetailsButton.Size = new System.Drawing.Size(190, 23);
+            this.GetStoredProcDetailsButton.Size = new System.Drawing.Size(182, 23);
             this.GetStoredProcDetailsButton.TabIndex = 0;
             this.GetStoredProcDetailsButton.Text = "Get details";
             this.GetStoredProcDetailsButton.UseVisualStyleBackColor = true;
