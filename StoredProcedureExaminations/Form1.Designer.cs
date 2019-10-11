@@ -60,6 +60,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Controls.Add(this.GetStoredProcDetailsButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 387);
@@ -79,7 +80,9 @@
             // 
             // StoredProcedureNamesListBox
             // 
+            this.StoredProcedureNamesListBox.BackColor = System.Drawing.Color.Black;
             this.StoredProcedureNamesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StoredProcedureNamesListBox.ForeColor = System.Drawing.Color.White;
             this.StoredProcedureNamesListBox.FormattingEnabled = true;
             this.StoredProcedureNamesListBox.Location = new System.Drawing.Point(0, 0);
             this.StoredProcedureNamesListBox.Name = "StoredProcedureNamesListBox";
@@ -107,7 +110,9 @@
             // 
             // StoredProcedureDefinitionTextBox
             // 
+            this.StoredProcedureDefinitionTextBox.BackColor = System.Drawing.Color.Black;
             this.StoredProcedureDefinitionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StoredProcedureDefinitionTextBox.ForeColor = System.Drawing.Color.White;
             this.StoredProcedureDefinitionTextBox.Location = new System.Drawing.Point(0, 0);
             this.StoredProcedureDefinitionTextBox.Multiline = true;
             this.StoredProcedureDefinitionTextBox.Name = "StoredProcedureDefinitionTextBox";
@@ -117,6 +122,7 @@
             // 
             // ParameterListView
             // 
+            this.ParameterListView.BackColor = System.Drawing.Color.Black;
             this.ParameterListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NameColumn,
             this.SystemTypeColumn,
@@ -124,6 +130,8 @@
             this.PrecisionColumn,
             this.ScaleColumn});
             this.ParameterListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ParameterListView.ForeColor = System.Drawing.Color.White;
+            this.ParameterListView.FullRowSelect = true;
             this.ParameterListView.Location = new System.Drawing.Point(0, 0);
             this.ParameterListView.Name = "ParameterListView";
             this.ParameterListView.Size = new System.Drawing.Size(592, 242);
