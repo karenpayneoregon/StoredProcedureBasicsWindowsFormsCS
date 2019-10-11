@@ -9,6 +9,13 @@
             All data queries are in Stored Procedures
             </summary>
         </member>
+        <member name="M:DataOperations.BackendOperations.GetStoredProcedureContents(System.String)">
+            <summary>
+            Get stored procedure definition.
+            If there are parameters they are not returned
+            </summary>
+            <param name="pName"></param>
+        </member>
         <member name="M:DataOperations.BackendOperations.ReturnErrorInformation">
             <summary>
             Mocked up sample showing how to return error information from a failed
@@ -32,6 +39,11 @@
             <param name="contactName"></param>
             <param name="contactIdentifier"></param>
             <returns></returns>
+        </member>
+        <member name="T:DataOperations.TypeClasses.StoredProcedureDetail">
+            <summary>
+            Container for stored procedure parameter definitions
+            </summary>
         </member>
         <member name="T:DataOperations.Properties.Resources">
             <summary>

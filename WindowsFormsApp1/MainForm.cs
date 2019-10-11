@@ -239,7 +239,8 @@ namespace WindowsFormsApp1
 
 		private void ExitButton_Click(object sender, EventArgs e)
 		{
-			_dataOperations.ReturnErrorInformation();
+			//_dataOperations.ReturnErrorInformation();
+            _dataOperations.GetStoredProcedureContentsWithParameters("UpateCustomer");
 
 		}
 

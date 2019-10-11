@@ -9,11 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{90E9255B-9FB2-4150-98DE-AFC2D1F80EA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingCRUD", "WindowsFormsApp1\WorkingCRUD.csproj", "{90E9255B-9FB2-4150-98DE-AFC2D1F80EA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataOperations", "DataOperations\DataOperations.csproj", "{A2C991FA-0442-4723-8D35-F97E263D2ADB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionsLibrary", "LanguageExtensions\ExtensionsLibrary.csproj", "{30FA06AE-2389-4D3F-A575-FA063401BAE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{4CC79373-C5C8-4F4F-916F-B9A8F437AEB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User interface examples", "User interface examples", "{71784F6A-D290-486F-8260-4CF5B341D471}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoredProcedureExaminations", "StoredProcedureExaminations\StoredProcedureExaminations.csproj", "{8606EB91-6FD9-4275-B8E1-C96E6A7AD46A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,19 @@ Global
 		{30FA06AE-2389-4D3F-A575-FA063401BAE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30FA06AE-2389-4D3F-A575-FA063401BAE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30FA06AE-2389-4D3F-A575-FA063401BAE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8606EB91-6FD9-4275-B8E1-C96E6A7AD46A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8606EB91-6FD9-4275-B8E1-C96E6A7AD46A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8606EB91-6FD9-4275-B8E1-C96E6A7AD46A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8606EB91-6FD9-4275-B8E1-C96E6A7AD46A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{90E9255B-9FB2-4150-98DE-AFC2D1F80EA9} = {71784F6A-D290-486F-8260-4CF5B341D471}
+		{A2C991FA-0442-4723-8D35-F97E263D2ADB} = {4CC79373-C5C8-4F4F-916F-B9A8F437AEB3}
+		{30FA06AE-2389-4D3F-A575-FA063401BAE8} = {4CC79373-C5C8-4F4F-916F-B9A8F437AEB3}
+		{8606EB91-6FD9-4275-B8E1-C96E6A7AD46A} = {71784F6A-D290-486F-8260-4CF5B341D471}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA898DAD-E5D8-410B-A8AC-EDEDD77E690A}

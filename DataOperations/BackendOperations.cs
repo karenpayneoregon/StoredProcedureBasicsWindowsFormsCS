@@ -23,12 +23,120 @@ namespace DataOperations
 			// Make sure to change DatabaseServer to the server
 			// with CustomerDatabase
 			//
-			DatabaseServer = ".\\SQLEXPRESS";
+			DatabaseServer = "KARENS-PC";
 			DefaultCatalog = "CustomerDatabase";
 
 		}
 
-		public DataTable RetrieveAllRecords()
+	    public List<string> StoredProcedureNameList()
+	    {
+            var storedProcNames = new List<string>();
+
+	        using (var cn = new SqlConnection { ConnectionString = ConnectionString })
+	        {
+	            using (var cmd = new SqlCommand() { Connection = cn })
+	            {
+	                cmd.CommandText = "SELECT NAME from SYS.PROCEDURES WHERE name NOT LIKE 'sp_%' ORDER BY name;";
+	                try
+	                {
+	                    cn.Open();
+
+	                    var reader = cmd.ExecuteReader();
+
+	                    while (reader.Read())
+	                    {
+	                        storedProcNames.Add(reader.GetString(0));
+	                    }
+
+	                }
+	                catch (Exception e)
+	                {
+	                    mHasException = true;
+	                    mLastException = e;
+	                }
+	            }
+	        }
+
+            return storedProcNames;
+
+	    }
+
+	    /// <summary>
+        /// Get stored procedure definition.
+        /// If there are parameters they are not returned
+        /// </summary>
+        /// <param name="pName"></param>
+	    public string GetStoredProcedureContents(string pName)
+	    {
+	        var contents = "";
+
+	        using (var cn = new SqlConnection {ConnectionString = ConnectionString})
+	        {
+	            using (var cmd = new SqlCommand() {Connection = cn})
+	            {
+	                cmd.CommandText = "SELECT definition FROM sys.sql_modules  " + 
+	                                 $"WHERE [object_id] = OBJECT_ID('dbo.{pName}');";
+
+	                try
+	                {
+	                    cn.Open();
+	                    contents = Convert.ToString(cmd.ExecuteScalar());
+	                }
+	                catch (Exception e)
+	                {
+	                    mHasException = true;
+	                    mLastException = e;
+                    }
+	            }
+	        }
+
+	        var index = contents.IndexOf("CREATE", StringComparison.Ordinal);
+
+	        return index != -1 ? 
+	            contents.Substring(index) : contents;
+
+	    }
+	    public List<StoredProcedureDetail> GetStoredProcedureContentsWithParameters(string pName)
+	    {
+	        var procedureDetailList = new List<StoredProcedureDetail>();
+
+            using (var cn = new SqlConnection { ConnectionString = ConnectionString })
+	        {
+	            using (var cmd = new SqlCommand() { Connection = cn})
+	            {
+	                try
+	                {
+	                    cn.Open();
+
+	                    cmd.CommandText =  "SELECT name, system_type_id, max_length, precision, scale " + 
+	                                       "FROM sys.parameters " + 
+	                                      $"WHERE [object_id] = OBJECT_ID('dbo.{pName}');";
+
+	                    var reader = cmd.ExecuteReader();
+	                    while (reader.Read())
+	                    {
+	                        procedureDetailList.Add(new StoredProcedureDetail()
+	                        {
+	                            Name = reader.GetString(0),
+	                            SystemType = reader.GetByte(1),
+	                            MaxLength = reader.GetInt16(2),
+	                            Precision = reader.GetByte(3),
+	                            Scale = reader.GetByte(4)
+                            });
+	                    }
+	                }
+	                catch (Exception e)
+	                {
+	                    mHasException = true;
+	                    mLastException = e;
+                    }
+	            }
+	        }
+
+	        return procedureDetailList;
+	    }
+
+        public DataTable RetrieveAllRecords()
 		{
 
 			mHasException = false;
@@ -36,9 +144,9 @@ namespace DataOperations
 
 			try
 			{
-				using (SqlConnection cn = new SqlConnection {ConnectionString = ConnectionString})
+				using (var cn = new SqlConnection {ConnectionString = ConnectionString})
 				{
-					using (SqlCommand cmd = new SqlCommand
+					using (var cmd = new SqlCommand
 					{
 						Connection = cn,
 						CommandType = CommandType.StoredProcedure
@@ -56,10 +164,10 @@ namespace DataOperations
 				}
 
 			}
-			catch (Exception ex)
+			catch (Exception e)
 			{
 				mHasException = true;
-				mLastException = ex;
+				mLastException = e;
 			}
 
 			return dt;
