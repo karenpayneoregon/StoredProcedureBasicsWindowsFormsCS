@@ -4,7 +4,8 @@
 
 The VB.NET Version will be available shortly, code was been rewritten ([resides here](https://github.com/karenpayneoregon/SqlServerStoredProceduresVisualBasic)) just need time to write the TechNet article.
 
-Place holder (TechNet article location)
+#### Article
+[TechNet article location](https://social.technet.microsoft.com/wiki/contents/articles/53361.sql-server-stored-procedures-for-c-windows-forms.aspx)
 
 #### Microsoft TechNet Wiki related articles
 
