@@ -30,20 +30,48 @@
             <param name="contactTypeIdentifier"></param>
             <returns></returns>
         </member>
-        <member name="M:DataOperations.BackendOperations.UpdateCustomer(System.Int32,System.String,System.String,System.Int32)">
+        <member name="M:DataOperations.BackendOperations.RetrieveContactTitles">
             <summary>
-            Update record if primary is found
+            Retrieve all contact titles
             </summary>
-            <param name="primaryKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataOperations.BackendOperations.AddCustomer(System.String,System.String,System.Int32)">
+            <summary>
+            Add a new Customer, return new primary key on success.
+            </summary>
             <param name="companyName"></param>
             <param name="contactName"></param>
-            <param name="contactIdentifier"></param>
+            <param name="contactTypeIdentifier"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataOperations.BackendOperations.RemoveCustomer(System.Int32)">
+            <summary>
+            Remove customer by primary key
+            </summary>
+            <param name="primaryKey">Existing customer key</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataOperations.BackendOperations.UpdateCustomer(System.Int32,System.String,System.String,System.Int32)">
+            <summary>
+            Update record by primary key
+            </summary>
+            <param name="primaryKey">Existing customer key</param>
+            <param name="companyName"></param>
+            <param name="contactName"></param>
+            <param name="contactIdentifier">Existing contact key</param>
             <returns></returns>
         </member>
         <member name="T:DataOperations.TypeClasses.StoredProcedureDetail">
             <summary>
             Container for stored procedure parameter definitions
             </summary>
+        </member>
+        <member name="M:DataOperations.TypeClasses.StoredProcedureDetail.ItemArray">
+            <summary>
+            Used to populate ListView
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:DataOperations.Properties.Resources">
             <summary>

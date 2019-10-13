@@ -240,12 +240,16 @@ namespace WindowsFormsApp1
 		private void ExitButton_Click(object sender, EventArgs e)
 		{
             Close();
-			//_dataOperations.ReturnErrorInformation();
+            _dataOperations.ReturnErrorInformation();
             //_dataOperations.GetStoredProcedureContentsWithParameters("UpateCustomer");
 
-		}
+            /*
+             * https://en.wikipedia.org/wiki/Stored_procedure
+             */
+
+        }
 
 
-	}
+    }
 
 }
