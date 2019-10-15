@@ -1,4 +1,4 @@
-USE [CustomerDatabase]
+--USE [CustomerDatabase]
 GO
 
 SET ANSI_NULLS ON
