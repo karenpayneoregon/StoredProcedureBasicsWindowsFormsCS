@@ -61,7 +61,7 @@ namespace WindowsApplication_cs.Classes
         /// </remarks>
         public byte[] ImageToByte(Image img)
         {
-            ImageConverter converter = new ImageConverter();
+            var converter = new ImageConverter();
             return (byte[])converter.ConvertTo(img, typeof(byte[]));
         }
 
@@ -81,6 +81,7 @@ namespace WindowsApplication_cs.Classes
                 using (var cmd = new SqlCommand { Connection = cn, CommandText = "SaveImage" })
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+
                     cmd.Parameters.Add("@img", SqlDbType.Image).Value = ImageToByte(image);
                     cmd.Parameters.Add("@description", SqlDbType.Text).Value = description;
 
