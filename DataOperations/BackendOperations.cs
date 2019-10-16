@@ -136,6 +136,136 @@ namespace DataOperations
 	        return procedureDetailList;
 	    }
 
+        #region Next three methods utilize a single stored procedure
+        /// <summary>
+        /// Get all customers
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllCustomersRecords()
+        {
+            mHasException = false;
+            var dt = new DataTable();
+
+            try
+            {
+                using (var cn = new SqlConnection { ConnectionString = ConnectionString })
+                {
+                    using (var cmd = new SqlCommand
+                    {
+                        Connection = cn,
+                        CommandType = CommandType.StoredProcedure
+                    })
+                    {
+
+                        cmd.CommandText = "dbo.[Customer_Reader]";
+
+                        cmd.Parameters.AddWithValue("@CustomerIdentifier", null);
+                        cmd.Parameters.AddWithValue("@CompanyName", null);
+
+                        cn.Open();
+
+                        dt.Load(cmd.ExecuteReader());
+
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                mHasException = true;
+                mLastException = e;
+            }
+
+            return dt;
+        }
+        /// <summary>
+        /// Get a single customer by primary key
+        /// </summary>
+        /// <param name="identifier"></param>
+        /// <returns></returns>
+	    public DataTable GetAllCustomerRecordsByIdentifier(int identifier)
+        {
+            mHasException = false;
+            var dt = new DataTable();
+
+            try
+            {
+                using (var cn = new SqlConnection { ConnectionString = ConnectionString })
+                {
+                    using (var cmd = new SqlCommand
+                    {
+                        Connection = cn,
+                        CommandType = CommandType.StoredProcedure
+                    })
+                    {
+
+                        cmd.CommandText = "dbo.[Customer_Reader]";
+
+                        cmd.Parameters.AddWithValue("@CustomerIdentifier", identifier);
+                        cmd.Parameters.AddWithValue("@CompanyName", null);
+
+                        cn.Open();
+
+                        dt.Load(cmd.ExecuteReader());
+
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                mHasException = true;
+                mLastException = e;
+            }
+
+            return dt;
+        }
+        /// <summary>
+        /// Get customer by customer name
+        /// </summary>
+        /// <param name="companyName"></param>
+        /// <returns></returns>
+        public DataTable GetAllCustomerRecordsByCompanyName(string companyName)
+        {
+            mHasException = false;
+            var dt = new DataTable();
+
+            try
+            {
+                using (var cn = new SqlConnection { ConnectionString = ConnectionString })
+                {
+                    using (var cmd = new SqlCommand
+                    {
+                        Connection = cn,
+                        CommandType = CommandType.StoredProcedure
+                    })
+                    {
+
+                        cmd.CommandText = "dbo.[Customer_Reader]";
+
+                        cmd.Parameters.AddWithValue("@CustomerIdentifier", null);
+                        cmd.Parameters.AddWithValue("@CompanyName", companyName);
+
+                        cn.Open();
+
+                        dt.Load(cmd.ExecuteReader());
+
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                mHasException = true;
+                mLastException = e;
+            }
+
+            return dt;
+        }
+
+        #endregion
+
+
         public DataTable RetrieveAllCustomerRecords()
 		{
 

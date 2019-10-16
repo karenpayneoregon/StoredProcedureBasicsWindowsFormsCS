@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoredProcedureExaminations
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoredProceduresImages", "ImagesStoredProcedures\StoredProceduresImages.csproj", "{D778FE90-C750-467B-92DD-D098398205BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecialReadStoredProcedureExample", "SpecialReadStoredProcedureExample\SpecialReadStoredProcedureExample.csproj", "{DBCD1859-C874-46C1-8C88-709D40137A25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D778FE90-C750-467B-92DD-D098398205BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D778FE90-C750-467B-92DD-D098398205BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D778FE90-C750-467B-92DD-D098398205BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBCD1859-C874-46C1-8C88-709D40137A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBCD1859-C874-46C1-8C88-709D40137A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBCD1859-C874-46C1-8C88-709D40137A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBCD1859-C874-46C1-8C88-709D40137A25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{30FA06AE-2389-4D3F-A575-FA063401BAE8} = {4CC79373-C5C8-4F4F-916F-B9A8F437AEB3}
 		{8606EB91-6FD9-4275-B8E1-C96E6A7AD46A} = {71784F6A-D290-486F-8260-4CF5B341D471}
 		{D778FE90-C750-467B-92DD-D098398205BF} = {71784F6A-D290-486F-8260-4CF5B341D471}
+		{DBCD1859-C874-46C1-8C88-709D40137A25} = {71784F6A-D290-486F-8260-4CF5B341D471}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA898DAD-E5D8-410B-A8AC-EDEDD77E690A}
