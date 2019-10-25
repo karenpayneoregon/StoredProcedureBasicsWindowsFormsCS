@@ -19,7 +19,7 @@ namespace WindowsApplication_cs
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FinishedButton_Click(object sender, EventArgs e)
         {
             if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -28,7 +28,7 @@ namespace WindowsApplication_cs
             }
         }
 
-        private void cueTextBox1_TextChanged(object sender, EventArgs e)
+        private void DescriptionTextBox1_TextChanged(object sender, EventArgs e)
         {
             OkButton.Enabled = !string.IsNullOrWhiteSpace(txtDescription.Text);
             if (OkButton.Enabled)

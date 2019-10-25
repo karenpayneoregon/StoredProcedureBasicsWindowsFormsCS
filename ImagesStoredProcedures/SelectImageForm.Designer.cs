@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.OpenFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.cmdFinished = new System.Windows.Forms.Button();
+            this.FinishedButton = new System.Windows.Forms.Button();
             this.OkButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescription = new WindowsApplication_cs.Classes.CueTextBox();
@@ -39,15 +39,15 @@
             // 
             this.OpenFileDialog1.FileName = "OpenFileDialog1";
             // 
-            // cmdFinished
+            // FinishedButton
             // 
-            this.cmdFinished.Location = new System.Drawing.Point(12, 77);
-            this.cmdFinished.Name = "cmdFinished";
-            this.cmdFinished.Size = new System.Drawing.Size(75, 23);
-            this.cmdFinished.TabIndex = 0;
-            this.cmdFinished.Text = "Select";
-            this.cmdFinished.UseVisualStyleBackColor = true;
-            this.cmdFinished.Click += new System.EventHandler(this.button1_Click);
+            this.FinishedButton.Location = new System.Drawing.Point(12, 77);
+            this.FinishedButton.Name = "FinishedButton";
+            this.FinishedButton.Size = new System.Drawing.Size(75, 23);
+            this.FinishedButton.TabIndex = 0;
+            this.FinishedButton.Text = "Select";
+            this.FinishedButton.UseVisualStyleBackColor = true;
+            this.FinishedButton.Click += new System.EventHandler(this.FinishedButton_Click);
             // 
             // OkButton
             // 
@@ -77,7 +77,7 @@
             this.txtDescription.Size = new System.Drawing.Size(283, 20);
             this.txtDescription.TabIndex = 1;
             this.txtDescription.WaterMarkOption = WindowsApplication_cs.Classes.WaterMark.Hide;
-            this.txtDescription.TextChanged += new System.EventHandler(this.cueTextBox1_TextChanged);
+            this.txtDescription.TextChanged += new System.EventHandler(this.DescriptionTextBox1_TextChanged);
             // 
             // SelectImageForm
             // 
@@ -87,7 +87,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.cmdFinished);
+            this.Controls.Add(this.FinishedButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SelectImageForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -100,7 +100,7 @@
         #endregion
 
         internal System.Windows.Forms.OpenFileDialog OpenFileDialog1;
-        private System.Windows.Forms.Button cmdFinished;
+        private System.Windows.Forms.Button FinishedButton;
         private Classes.CueTextBox txtDescription;
         private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.Label label1;
