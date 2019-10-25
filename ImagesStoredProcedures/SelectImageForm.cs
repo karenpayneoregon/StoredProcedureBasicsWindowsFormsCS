@@ -30,11 +30,13 @@ namespace WindowsApplication_cs
 
         private void cueTextBox1_TextChanged(object sender, EventArgs e)
         {
-            button2.Enabled = !string.IsNullOrWhiteSpace(txtDescription.Text);
-            if (button2.Enabled)
+            OkButton.Enabled = !string.IsNullOrWhiteSpace(txtDescription.Text);
+            if (OkButton.Enabled)
             {
                 Description = txtDescription.Text;
             }
         }
+
+  
     }
 }

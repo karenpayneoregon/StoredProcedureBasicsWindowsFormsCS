@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.PictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cmdInsertImage = new System.Windows.Forms.Button();
+            this.CurrentPictureBox = new System.Windows.Forms.PictureBox();
+            this.InsertImageButton = new System.Windows.Forms.Button();
             this.DataGridView1 = new System.Windows.Forms.DataGridView();
+            this.IdentifierColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -50,48 +52,44 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.OpenFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.IdentifierColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // PictureBox1
+            // CurrentPictureBox
             // 
-            this.PictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PictureBox1.Location = new System.Drawing.Point(375, 6);
-            this.PictureBox1.Name = "PictureBox1";
-            this.PictureBox1.Size = new System.Drawing.Size(225, 143);
-            this.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PictureBox1.TabIndex = 0;
-            this.PictureBox1.TabStop = false;
+            this.CurrentPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CurrentPictureBox.Location = new System.Drawing.Point(375, 6);
+            this.CurrentPictureBox.Name = "CurrentPictureBox";
+            this.CurrentPictureBox.Size = new System.Drawing.Size(225, 143);
+            this.CurrentPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.CurrentPictureBox.TabIndex = 0;
+            this.CurrentPictureBox.TabStop = false;
             // 
-            // cmdInsertImage
+            // InsertImageButton
             // 
-            this.cmdInsertImage.Location = new System.Drawing.Point(12, 32);
-            this.cmdInsertImage.Name = "cmdInsertImage";
-            this.cmdInsertImage.Size = new System.Drawing.Size(107, 58);
-            this.cmdInsertImage.TabIndex = 0;
-            this.cmdInsertImage.Text = "Insert image";
-            this.cmdInsertImage.UseVisualStyleBackColor = true;
-            this.cmdInsertImage.Click += new System.EventHandler(this.cmdInsertImage_Click);
+            this.InsertImageButton.Location = new System.Drawing.Point(12, 32);
+            this.InsertImageButton.Name = "InsertImageButton";
+            this.InsertImageButton.Size = new System.Drawing.Size(107, 58);
+            this.InsertImageButton.TabIndex = 0;
+            this.InsertImageButton.Text = "Insert image";
+            this.InsertImageButton.UseVisualStyleBackColor = true;
+            this.InsertImageButton.Click += new System.EventHandler(this.InsertImageButton_Click);
             // 
             // DataGridView1
             // 
             this.DataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdentifierColumn,
@@ -104,11 +102,29 @@
             this.DataGridView1.Size = new System.Drawing.Size(611, 262);
             this.DataGridView1.TabIndex = 0;
             // 
+            // IdentifierColumn
+            // 
+            this.IdentifierColumn.DataPropertyName = "ImageID";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.IdentifierColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            this.IdentifierColumn.HeaderText = "ID";
+            this.IdentifierColumn.Name = "IdentifierColumn";
+            this.IdentifierColumn.ReadOnly = true;
+            // 
+            // DescriptionColumn
+            // 
+            this.DescriptionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescriptionColumn.DataPropertyName = "Description";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.DescriptionColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            this.DescriptionColumn.HeaderText = "Description";
+            this.DescriptionColumn.Name = "DescriptionColumn";
+            // 
             // Panel1
             // 
             this.Panel1.Controls.Add(this.bindingNavigator1);
-            this.Panel1.Controls.Add(this.cmdInsertImage);
-            this.Panel1.Controls.Add(this.PictureBox1);
+            this.Panel1.Controls.Add(this.InsertImageButton);
+            this.Panel1.Controls.Add(this.CurrentPictureBox);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Panel1.Location = new System.Drawing.Point(0, 262);
             this.Panel1.Name = "Panel1";
@@ -232,24 +248,6 @@
             // 
             this.OpenFileDialog1.FileName = "OpenFileDialog1";
             // 
-            // IdentifierColumn
-            // 
-            this.IdentifierColumn.DataPropertyName = "ImageID";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.IdentifierColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.IdentifierColumn.HeaderText = "ID";
-            this.IdentifierColumn.Name = "IdentifierColumn";
-            this.IdentifierColumn.ReadOnly = true;
-            // 
-            // DescriptionColumn
-            // 
-            this.DescriptionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescriptionColumn.DataPropertyName = "Description";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.DescriptionColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DescriptionColumn.HeaderText = "Description";
-            this.DescriptionColumn.Name = "DescriptionColumn";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,7 +259,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Code sample";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
@@ -274,8 +272,8 @@
 
         #endregion
 
-        internal System.Windows.Forms.PictureBox PictureBox1;
-        internal System.Windows.Forms.Button cmdInsertImage;
+        internal System.Windows.Forms.PictureBox CurrentPictureBox;
+        internal System.Windows.Forms.Button InsertImageButton;
         internal System.Windows.Forms.DataGridView DataGridView1;
         internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.OpenFileDialog OpenFileDialog1;

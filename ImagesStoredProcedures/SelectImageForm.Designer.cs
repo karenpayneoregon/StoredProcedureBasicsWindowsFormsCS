@@ -30,7 +30,7 @@
         {
             this.OpenFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.cmdFinished = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.OkButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescription = new WindowsApplication_cs.Classes.CueTextBox();
             this.SuspendLayout();
@@ -49,16 +49,16 @@
             this.cmdFinished.UseVisualStyleBackColor = true;
             this.cmdFinished.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // OkButton
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(220, 77);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "OK";
-            this.button2.UseVisualStyleBackColor = true;
+            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OkButton.Enabled = false;
+            this.OkButton.Location = new System.Drawing.Point(220, 77);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(75, 23);
+            this.OkButton.TabIndex = 2;
+            this.OkButton.Text = "OK";
+            this.OkButton.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -85,7 +85,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(322, 121);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.OkButton);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.cmdFinished);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -102,7 +102,7 @@
         internal System.Windows.Forms.OpenFileDialog OpenFileDialog1;
         private System.Windows.Forms.Button cmdFinished;
         private Classes.CueTextBox txtDescription;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.Label label1;
     }
 }

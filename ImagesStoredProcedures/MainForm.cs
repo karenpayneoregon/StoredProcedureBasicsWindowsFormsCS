@@ -38,10 +38,10 @@ namespace WindowsApplication_cs
 
             var imageBinding = new Binding("Image", _bindingSource, "ImageData");
             imageBinding.Format += BindImage;
-            PictureBox1.DataBindings.Add(imageBinding);
+            CurrentPictureBox.DataBindings.Add(imageBinding);
 
         }
-        void cmdInsertImage_Click(object sender, EventArgs e)
+        void InsertImageButton_Click(object sender, EventArgs e)
         {
             var f = new SelectImageForm();
 

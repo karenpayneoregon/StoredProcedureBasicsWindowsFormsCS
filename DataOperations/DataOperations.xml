@@ -29,6 +29,13 @@
             <param name="identifier"></param>
             <returns></returns>
         </member>
+        <member name="M:DataOperations.BackendOperations.GetAllCustomerRecordsByCompanyName(System.String)">
+            <summary>
+            Get customer by customer name
+            </summary>
+            <param name="companyName"></param>
+            <returns></returns>
+        </member>
         <member name="M:DataOperations.BackendOperations.ReturnErrorInformation">
             <summary>
             Mocked up sample showing how to return error information from a failed
