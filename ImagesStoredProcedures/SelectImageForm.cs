@@ -35,8 +35,6 @@ namespace WindowsApplication_cs
             {
                 Description = txtDescription.Text;
             }
-        }
-
-  
+        } 
     }
 }
