@@ -51,8 +51,8 @@ namespace WindowsApplication_cs
                 {
                     int Identifier = 0;
                     var fileBytes = File.ReadAllBytes(f.FileName);
-
-                    if (_databaseImageOperations.InsertImage(fileBytes, f.Description, ref Identifier) == Success.Okay)
+                    var (success, exception) = _databaseImageOperations.InsertImage(fileBytes, f.Description, ref Identifier);
+                    if (success == Success.Okay)
                     {
                         ((DataTable)_bindingSource.DataSource).Rows.Add(Identifier, fileBytes, f.Description);
 

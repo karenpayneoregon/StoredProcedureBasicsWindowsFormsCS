@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using BaseConnectionLibrary.ConnectionClasses;
+
 
 namespace WindowsApplication_cs.Classes
 {
@@ -19,17 +19,12 @@ namespace WindowsApplication_cs.Classes
         OhSnap
     }
 
-    public class DatabaseImageOperations : SqlServerConnection
+    public class DatabaseImageOperations 
     {
-        public DatabaseImageOperations()
-        {
-            //
-            // Make sure to change DatabaseServer to the server
-            // with CustomerDatabase
-            //
-            DatabaseServer = "KARENS-PC";
-            DefaultCatalog = "NORTHWND_NEW.MDF";
-        }
+
+        private static string ConnectionString =
+            "Data Source=.\\SQLEXPRESS;Initial Catalog=NORTHWND_NEW.MDF;" +
+            "Integrated Security=True";
         /// <summary>
         /// Determines if there are any records
         /// </summary>
@@ -74,7 +69,6 @@ namespace WindowsApplication_cs.Classes
         /// <returns></returns>
         public Success InsertImage(Image image, string description, ref int identifier)
         {
-            mHasException = false;
 
             using (var cn = new SqlConnection { ConnectionString = ConnectionString })
             {
@@ -99,8 +93,6 @@ namespace WindowsApplication_cs.Classes
                     }
                     catch (Exception ex)
                     {
-                        mHasException = true;
-                        mLastException = ex;
                         return Success.OhSnap;
                     }
                 }
@@ -113,10 +105,9 @@ namespace WindowsApplication_cs.Classes
         /// <param name="description">used to describe the image</param>
         /// <param name="identifier">New primary key</param>
         /// <returns></returns>
-        public Success InsertImage(byte[] imageBytes, string description, ref int identifier)
+        public (Success success, Exception exception) InsertImage(byte[] imageBytes, string description, ref int identifier)
         {
 
-            mHasException = false;
 
             using (var cn = new SqlConnection { ConnectionString = ConnectionString })
             {
@@ -140,13 +131,11 @@ namespace WindowsApplication_cs.Classes
                     {
                         cn.Open();
                         identifier = Convert.ToInt32(cmd.ExecuteScalar());
-                        return Success.Okay;
+                        return (Success.Okay, null);
                     }
                     catch (Exception ex)
                     {
-                        mHasException = true;
-                        mLastException = ex;
-                        return Success.OhSnap;
+                        return (Success.OhSnap,ex);
                     }
                 }
             }
@@ -163,9 +152,8 @@ namespace WindowsApplication_cs.Classes
         /// <remarks>
         /// An alternative is to return the image rather than success as done now
         /// </remarks>
-        public Success GetImage(int identifier, ref Image inBoundImage, ref string description)
+        public (Success success, Exception exception) GetImage(int identifier, ref Image inBoundImage, ref string description)
         {
-            mHasException = false;
 
             DataTable dtResults = new DataTable();
             Success SuccessType = 0;
@@ -198,14 +186,12 @@ namespace WindowsApplication_cs.Classes
                     }
                     catch (Exception ex)
                     {
-                        mHasException = true;
-                        mLastException = ex;
-                        SuccessType = Success.OhSnap;
+                        return (Success.OhSnap, ex);
                     }
                 }
             }
 
-            return SuccessType;
+            return (SuccessType, null);
 
         }
         /// <summary>
@@ -217,7 +203,7 @@ namespace WindowsApplication_cs.Classes
         /// <remarks>
         /// Not used, here for you if needed to get a single image, has been tested and works
         /// </remarks>
-        public Success GetImage(int identifier, ref Image inBoundImage)
+        public (Success success, Exception exception) GetImage(int identifier, ref Image inBoundImage)
         {
             var description = "";
             return GetImage(identifier, ref inBoundImage, ref description);
@@ -229,7 +215,6 @@ namespace WindowsApplication_cs.Classes
         public DataTable DataTable()
         {
             var dt = new DataTable();
-            mHasException = false;
 
             using (var cn = new SqlConnection { ConnectionString = ConnectionString })
             {
@@ -237,16 +222,8 @@ namespace WindowsApplication_cs.Classes
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    try
-                    {
-                        cn.Open();
-                        dt.Load(cmd.ExecuteReader());
-                    }
-                    catch (Exception ex)
-                    {
-                        mHasException = true;
-                        mLastException = ex;
-                    }
+                    cn.Open();
+                    dt.Load(cmd.ExecuteReader());
                 }
             }
 

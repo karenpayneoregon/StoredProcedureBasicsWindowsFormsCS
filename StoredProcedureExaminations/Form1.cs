@@ -23,7 +23,9 @@ namespace StoredProcedureExaminations
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            StoredProcedureNamesListBox.DataSource = _dataOperations.StoredProcedureNameList();
+            var (list, _) = _dataOperations.StoredProcedureNameList();
+            
+            StoredProcedureNamesListBox.DataSource = list;
             StoredProcedureNamesListBox.MouseDoubleClick += StoredProcedureNamesListBox_MouseDoubleClick;
         }
         private void GetStoredProcDetailsButton_Click(object sender, EventArgs e)
@@ -37,15 +39,16 @@ namespace StoredProcedureExaminations
         private void GetDetails()
         {
             ParameterListView.Items.Clear();
+            var (results, _) = _dataOperations.GetStoredProcedureContents(StoredProcedureNamesListBox.Text);
+            StoredProcedureDefinitionTextBox.Text = results;
 
-            StoredProcedureDefinitionTextBox.Text = _dataOperations
-                .GetStoredProcedureContents(StoredProcedureNamesListBox.Text);
+            var (details, _) = _dataOperations.GetStoredProcedureContentsWithParameters(StoredProcedureNamesListBox.Text);
 
-            var details = _dataOperations.GetStoredProcedureContentsWithParameters(StoredProcedureNamesListBox.Text);
             foreach (var detail in details)
             {
                 ParameterListView.Items.Add(new ListViewItem(detail.ItemArray()));
             }
+
             ParameterListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 

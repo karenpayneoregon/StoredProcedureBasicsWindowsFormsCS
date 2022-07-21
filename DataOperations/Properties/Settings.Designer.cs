@@ -8,80 +8,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-
-//INSTANT C# NOTE: Formerly VB project-level imports:
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Xml.Linq;
-using System.Threading.Tasks;
-
-namespace DataOperations
-{
-	namespace Properties
-	{
-
-		[global::System.Runtime.CompilerServices.CompilerGeneratedAttribute(), global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0"), global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-		internal sealed partial class Settings : System.Configuration.ApplicationSettingsBase
-		{
-			private static Settings defaultInstance = (Settings)global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings());
-
-#region My.Settings Auto-Save Functionality
-#if WINDOWSFORMS
-		private static bool addedHandler;
-
-		private static object addedHandlerLockObject = new object();
-
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute(), global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-		private static void AutoSaveSettings(global::System.Object sender, global::System.EventArgs e)
-		{
-			if (My.MyApplication.Application.SaveMySettingsOnExit)
-			{
-				defaultInstance.Save();
-			}
-		}
-#endif
-#endregion
-
-			public static Settings Default
-			{
-				get
-				{
-
-#if WINDOWSFORMS
-				   if (!addedHandler)
-				   {
-						lock (addedHandlerLockObject)
-						{
-							if (!addedHandler)
-							{
-								My.MyApplication.Application.Shutdown += new Microsoft.VisualBasic.ApplicationServices.ShutdownEventHandler(AutoSaveSettings);
-								addedHandler = true;
-							}
-						}
-					}
-#endif
-					return defaultInstance;
-				}
-			}
-		}
-	}
-
-//INSTANT C# NOTE: This block was only required to support 'My.Settings' in VB. 'Properties.Settings' is used in C#:
-//Namespace My
-//
-//	<Microsoft.VisualBasic.HideModuleNameAttribute(), global::System.Diagnostics.DebuggerNonUserCodeAttribute(), global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()> Friend Module MySettingsProperty
-//
-//		<global::System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")> Friend ReadOnly Property Settings() As DataOperations.My.MySettings
-//			Get
-//				return DataOperations.My.MySettings.Default
-//			End Get
-//		End Property
-//	End Module
-//End Namespace
-
+namespace DataOperations.Properties {
+    
+    
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
 }
